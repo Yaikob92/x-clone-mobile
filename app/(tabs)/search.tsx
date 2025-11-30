@@ -1,13 +1,12 @@
+import { Feather } from "@expo/vector-icons";
 import {
   View,
-  Text,
   TextInput,
   ScrollView,
+  Text,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Feather } from "@expo/vector-icons";
 
 const TRENDING_TOPICS = [
   { topic: "#ReactNative", tweets: "125K" },
@@ -20,7 +19,7 @@ const TRENDING_TOPICS = [
 const SearchScreen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      {/* Header */}
+      {/* HEADER */}
       <View className="px-4 py-3 border-b border-gray-100">
         <View className="flex-row items-center bg-gray-100 rounded-full px-4 py-3">
           <Feather name="search" size={20} color="#657786" />
@@ -38,14 +37,19 @@ const SearchScreen = () => {
             Trending for you
           </Text>
           {TRENDING_TOPICS.map((item, index) => (
-            <TouchableOpacity key={index} className="py-3 border-b">
+            <TouchableOpacity
+              key={index}
+              className="py-3 border-b border-gray-100"
+            >
               <Text className="text-gray-500 text-sm">
                 Trending in Technology
               </Text>
               <Text className="font-bold text-gray-900 text-lg">
                 {item.topic}
               </Text>
-              <Text className="text-gray-500 text-sm">{item.tweets}</Text>
+              <Text className="text-gray-500 text-sm">
+                {item.tweets} Tweets
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
