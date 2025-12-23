@@ -1,8 +1,8 @@
-import React from "react";
-import { Redirect, Tabs } from "expo-router";
-import { Feather } from "@expo/vector-icons";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useAuth } from "@clerk/clerk-expo";
+import { Feather } from "@expo/vector-icons";
+import { Redirect, Tabs } from "expo-router";
+import React from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const TabsbLayout = () => {
   const insets = useSafeAreaInsets();

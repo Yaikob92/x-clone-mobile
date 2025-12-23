@@ -1,10 +1,10 @@
 import { Feather } from "@expo/vector-icons";
 import {
-  View,
-  TextInput,
   ScrollView,
   Text,
+  TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 

@@ -8,7 +8,6 @@ export const useSocialAuth = () => {
 
   const handleSocialAuth = async (strategy: "oauth_google" | "oauth_apple") => {
     setIsLoading(true);
-
     try {
       const { createdSessionId, setActive } = await startSSOFlow({ strategy });
       if (createdSessionId && setActive) {

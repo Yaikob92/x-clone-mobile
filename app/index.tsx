@@ -1,12 +1,14 @@
-import { View, Text } from "react-native";
+import { useClerk } from "@clerk/clerk-expo";
 import React from "react";
+import { TouchableOpacity, View } from "react-native";
 
-const Index = () => {
+const HomeScreen = () => {
+  const { signOut } = useClerk();
   return (
     <View>
-      <Text>index</Text>
+      <TouchableOpacity onPress={() => signOut()}>Logout</TouchableOpacity>
     </View>
   );
 };
 
-export default Index;
+export default HomeScreen;
