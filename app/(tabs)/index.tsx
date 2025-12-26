@@ -1,15 +1,28 @@
-import { Text } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import SignOutBotton from "@/components/SignOutBotton";
 import { useUserSync } from "@/hooks/useUserSync";
+import { Ionicons } from "@expo/vector-icons";
+import PostComposer from "@/components/PostComposer";
 
 const HomeScreen = () => {
   useUserSync();
   return (
     <SafeAreaView className="flex-1">
-      <Text>HomeScreen</Text>
-      <SignOutBotton />
+      <View className="flex-row justify-between items-center px-4 py-3 border-b border-gray-100">
+        <Ionicons name="logo-twitter" size={20} color="#1DA1f2" />
+        <Text className="text-xl font-bold text-gray-900">Home</Text>
+        <SignOutBotton />
+      </View>
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        className="flex-1"
+        contentContainerStyle={{ paddingBottom: 80 }}
+      >
+        <PostComposer />
+      </ScrollView>
     </SafeAreaView>
   );
 };
