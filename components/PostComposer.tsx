@@ -1,15 +1,14 @@
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
-import React from "react";
 import { useCreatePost } from "@/hooks/useCreatePost";
 import { useUser } from "@clerk/clerk-expo";
 import { Feather } from "@expo/vector-icons";
+import {
+  ActivityIndicator,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const PostComposer = () => {
   const {
@@ -69,13 +68,13 @@ const PostComposer = () => {
             <Feather name="image" size={20} color="#1DA1F2" />
           </TouchableOpacity>
           <TouchableOpacity className="mr-4" onPress={takePhoto}>
-            <Feather name="camera" size={20} color="1DA1F2" />
+            <Feather name="camera" size={20} color="#1DA1F2" />
           </TouchableOpacity>
         </View>
         <View className="flex-row items-center">
           {content.length > 0 && (
             <Text
-              className={`text-sm mr-3 ${content.length > 260 ? "text-red-500" : "text-gra-500"}`}
+              className={`text-sm mr-3 ${content.length > 260 ? "text-red-500" : "text-gray-500"}`}
             >
               {280 - content.length}
             </Text>
