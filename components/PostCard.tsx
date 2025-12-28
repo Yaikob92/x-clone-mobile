@@ -3,10 +3,11 @@ import { formatDate, formatNumber } from "@/utils/formatters";
 import { AntDesign, Feather } from "@expo/vector-icons";
 import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 
-interface PostCardPages {
+interface PostCardProps {
   post: Post;
   onLike: (postId: string) => void;
   onDelete: (postId: string) => void;
+  onComment: (post: Post) => void;
   isLiked?: boolean;
   currentUser: User;
 }
@@ -17,8 +18,9 @@ const PostCard = ({
   onLike,
   post,
   isLiked,
-}: PostCardPages) => {
-  const isOwnPost = post.user._id === currentUser._id;
+  onComment,
+}: PostCardProps) => {
+  const isOwnPost = post.user._id === currentUser?._id;
   const handleDelete = () => {
     Alert.alert("Delete Post", "Are you sure you want to delete this post?", [
       { text: "Cancel", style: "cancel" },
@@ -43,7 +45,7 @@ const PostCard = ({
               <Text className="font-bold text-gray-900 mr-1">
                 {post.user.firstName} {post.user.lastName}
               </Text>
-              <Text className="text-gray-500 ml-5">
+              <Text className="text-gray-500 ml-1">
                 @{post.user.username} . {formatDate(post.createdAt)}
               </Text>
             </View>
@@ -64,7 +66,7 @@ const PostCard = ({
           {post.image && (
             <Image
               source={{ uri: post.image }}
-              className="w-full rounded-2xl mb-3"
+              className="w-full h-48 rounded-2xl mb-3"
               resizeMode="cover"
             />
           )}
@@ -72,7 +74,7 @@ const PostCard = ({
           <View className="flex-row justify-between max-w-xs">
             <TouchableOpacity
               className="flex-row items-center"
-              onPress={() => { }}
+              onPress={() => onComment(post)}
             >
               <Feather name="message-circle" size={18} color="#657786" />
               <Text className="text-gray-500 text-sm ml-2">
@@ -80,7 +82,10 @@ const PostCard = ({
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity className="flex-row items-center">
+            <TouchableOpacity
+              className="flex-row items-center"
+              onPress={() => console.log(post.user.username)}
+            >
               <Feather name="repeat" size={18} color="#657786" />
               <Text className="text-gray-500 text-sm ml-2">0</Text>
             </TouchableOpacity>

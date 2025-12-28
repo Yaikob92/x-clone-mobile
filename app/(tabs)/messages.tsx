@@ -2,14 +2,14 @@ import { CONVERSATIONS, ConversationType } from "@/data/conversations";
 import { Feather } from "@expo/vector-icons";
 import { useState } from "react";
 import {
-  View,
-  Text,
   Alert,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
   Image,
   Modal,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import {
   SafeAreaView,
@@ -207,9 +207,8 @@ const MessagesScreen = () => {
                       className={`flex-1 ${message.fromUser ? "items-end" : ""}`}
                     >
                       <View
-                        className={`rounded-2xl px-4 py-3 max-w-xs ${
-                          message.fromUser ? "bg-blue-500" : "bg-gray-100"
-                        }`}
+                        className={`rounded-2xl px-4 py-3 max-w-xs ${message.fromUser ? "bg-blue-500" : "bg-gray-100"
+                          }`}
                       >
                         <Text
                           className={
@@ -242,9 +241,8 @@ const MessagesScreen = () => {
               </View>
               <TouchableOpacity
                 onPress={sendMessage}
-                className={`size-10 rounded-full items-center justify-center ${
-                  newMessage.trim() ? "bg-blue-500" : "bg-gray-300"
-                }`}
+                className={`size-10 rounded-full items-center justify-center ${newMessage.trim() ? "bg-blue-500" : "bg-gray-300"
+                  }`}
                 disabled={!newMessage.trim()}
               >
                 <Feather name="send" size={20} color="white" />

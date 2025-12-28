@@ -1,8 +1,8 @@
 import { useApiClient } from "@/utils/api";
-import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Alert } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { useState } from "react";
+import { Alert } from "react-native";
 
 export const useCreatePost = () => {
   const [content, setContent] = useState("");
@@ -41,7 +41,7 @@ export const useCreatePost = () => {
     onSuccess: () => {
       setContent("");
       setSelectedImage(null);
-      queryClient.invalidateQueries({ queryKey: ["Posts"] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
       Alert.alert("Success", "Post created successfully!");
     },
 
@@ -72,9 +72,9 @@ export const useCreatePost = () => {
     const result = useCamera
       ? await ImagePicker.launchCameraAsync(pickerOptions)
       : await ImagePicker.launchImageLibraryAsync({
-          ...pickerOptions,
-          mediaTypes: ["images"],
-        });
+        ...pickerOptions,
+        mediaTypes: ["images"],
+      });
     if (!result.canceled) setSelectedImage(result.assets[0].uri);
   };
 

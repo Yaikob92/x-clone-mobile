@@ -4,7 +4,7 @@ import { Redirect, Tabs } from "expo-router";
 import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const TabsbLayout = () => {
+const TabsLayout = () => {
   const insets = useSafeAreaInsets();
 
   const { isSignedIn } = useAuth();
@@ -78,4 +78,4 @@ const TabsbLayout = () => {
   );
 };
 
-export default TabsbLayout;
+export default TabsLayout;
