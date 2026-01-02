@@ -6,7 +6,7 @@ import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 import CommentsModal from "./CommentsModal";
 import PostCard from "./PostCard";
 
-const PostsList = () => {
+const PostsList = ({ username }: { username?: string }) => {
   const { currentUser } = useCurrentUser();
   const {
     posts,
@@ -16,7 +16,7 @@ const PostsList = () => {
     toggleLike,
     deletePost,
     checkIsLiked,
-  } = usePosts();
+  } = usePosts(username);
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
   const selectedPost = selectedPostId
     ? posts.find((p: Post) => p._id === selectedPostId)

@@ -1,10 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useApiClient } from "../utils/api";
+import { Notification } from "@/types";
 
-interface NotificationResponse {
-  notifications: Notification[];
-  _id: string;
-}
 export const useNotifications = () => {
   const api = useApiClient();
   const queryClient = useQueryClient();
@@ -15,7 +12,7 @@ export const useNotifications = () => {
     error,
     refetch,
     isRefetching,
-  } = useQuery<NotificationResponse>({
+  } = useQuery<Notification[]>({
     queryKey: ["notifications"],
     queryFn: async () => {
       const response = await api.get("/notifications");
@@ -39,7 +36,7 @@ export const useNotifications = () => {
       const previousNotifications = queryClient.getQueryData(["notifications"]);
       queryClient.setQueryData(
         ["notifications"],
-        (old: NotificationResponse[]) =>
+        (old: Notification[]) =>
           old?.filter((notification) => notification._id !== notificationId) ||
           []
       );
