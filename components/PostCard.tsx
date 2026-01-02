@@ -1,7 +1,7 @@
 import { Post, User } from "@/types";
 import { formatDate, formatNumber } from "@/utils/formatters";
 import { AntDesign, Feather } from "@expo/vector-icons";
-import { View, Text, Alert, Image, TouchableOpacity } from "react-native";
+import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
 
 interface PostCardProps {
   post: Post;
