@@ -20,6 +20,7 @@ const PostCard = ({
   isLiked,
   onComment,
 }: PostCardProps) => {
+  if (!post?.user) return null;
   const isOwnPost = post.user._id === currentUser._id;
 
   const handleDelete = () => {
